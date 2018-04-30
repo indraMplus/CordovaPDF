@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="lib/css/onsenui.css">
+    <link rel="stylesheet" href="lib/css/onsen-css-components.min.css">
+    <script src="lib/js/onsenui.min.js"></script>
+    <script src="lib/js/pdf.js"></script>
+</head>
+<body>
+<ons-page id="helloworld-page">
+    <ons-toolbar>
+        <div class="left">
+
+        </div>
+
+        <div class="center">Android PDF Reader</div>
+        <div class="right">
+            <input type="file" id="file-content" title="+">
+        </div>
+    </ons-toolbar>
+
+    <section style="padding: 8px">
+        <div style="text-align: center; margin-top: 30px;">
+            <p>
+                Area Body aplikasi
+
+            </p>
+    </section>
+</ons-page>
+<!--area javascript -->
+<script type="text/javascript">
+    function readSingleFile(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contents = e.target.result;
+    displayContents(contents);
+  };
+  reader.readAsText(file);
+}
+
+function displayContents(contents) {
+  var element = document.getElementById('file-content');
+  element.textContent = contents;
+}
+
+document.getElementById('file-input')
+  .addEventListener('change', readSingleFile, false);
+</script>
+</body>
+</html>
